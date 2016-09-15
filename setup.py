@@ -17,6 +17,7 @@ import os
 from os import path
 from codecs import open
 from setuptools import setup
+import versioneer
 
 current_directory = os.path.dirname(__file__)
 readme_filename = "README.md"
@@ -48,6 +49,8 @@ dependency_links = [req.strip().replace('git+','') for req in all_reqs if 'git+'
 if __name__ == "__main__":
     setup(
         name="pygdc",
+        version=versioneer.get_version(),
+        cmdclass=versioneer.get_cmdclass(),
         description="Python API for Genomic Data Commons",
         license="http://www.apache.org/licenses/LICENSE-2.0.html",
         classifiers=[

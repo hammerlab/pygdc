@@ -1,0 +1,2 @@
+include versioneer.py
+include pygdc/_version.py
