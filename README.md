@@ -5,7 +5,7 @@ Python API for accessing Genomic Data Commons
 ### Basic API
 
 #### Cases
-
+```python
 from pygdc import get_cases
 from pygdc.filters import equals_filter
 
@@ -15,6 +15,7 @@ results = get_cases(
     fields='demographic.gender,project.disease_type', 
     max_results=50
 )
+```
 
 ### Cohorts Example
 
