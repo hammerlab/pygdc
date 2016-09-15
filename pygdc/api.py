@@ -11,11 +11,11 @@ def _endpoint_url(endpoint):
 
 def _get_endpoint(endpoint, filters, fields, sort, start=1, max_results=None):
     logging.info("Making request to endpoint {}".format(endpoint))
-    
+
     params = {'fields': fields, 'filters': filters, 'from': start, 'sort' : sort}
     if max_results:
         params['size'] = max_results
-        
+
     response = requests.get(
                  url=_endpoint_url(endpoint),
                  params=params 
@@ -29,7 +29,7 @@ def _get_endpoint(endpoint, filters, fields, sort, start=1, max_results=None):
     return parsed_response
 
 def _get_endpoint_results(endpoint, filters, fields, sort, max_results=None):
-  
+
     start = 1
     results_count = 0
     results = []
@@ -40,14 +40,14 @@ def _get_endpoint_results(endpoint, filters, fields, sort, max_results=None):
         total = int(pagination_info['total'])
         if max_results is None or max_results > total:
             max_results = total
-       
+   
         partial_results_count = int(pagination_info['count'])
         start += partial_results_count
         results_count += partial_results_count
         results += partial_results['hits']
-        
+
     logging.info("Result contains {} records".format(len(results)))
-    
+
     return results
 
 
