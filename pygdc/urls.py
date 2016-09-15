@@ -1,0 +1,1 @@
+GDC_API_URL = "https://gdc-api.nci.nih.gov"
